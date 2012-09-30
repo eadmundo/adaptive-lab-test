@@ -1,0 +1,10 @@
+*~
+*.pyc
+.vagrant
+.venv
+.DS_Store
+npm-debug.log
+app/static/assets
+build/
+components/
+bits/

@@ -10,12 +10,27 @@
 	</h3>
 
 	{% if tweets|length %}
-		<h4>{{ pc_kw_tweets }}% of the total tweets stored contain one of the keywords</h4>
-		<ul>
+		<h4>{{ pc_kw_tweets }}% of the total tweets stored contain one of the keywords.</h4>
+		<ul id="tweets">
 		{% for tweet in tweets %}
 			<li>
-				<p><strong>{{ tweet.message }}</strong></p>
-				<p>by {{ tweet.user.user_handle }} at {{ tweet.updated_at }}</p>
+				<a href="#">
+					<div class="main">
+						<p><strong>{{ tweet.message }}</strong></p>
+						<p>by {{ tweet.user.user_handle }} at {{ tweet.updated_at }}</p>
+					</div>
+					<div class="data">
+						<p>Sentiment score: {{ tweet.sentiment }}</p>
+						<p>
+							Message received by
+							{% if tweet.user.followers > 0 %}
+								{{ tweet.user.followers }} of {{ tweet.user.user_handle }}'s followers.
+							{% else %}
+								no-one.
+							{% endif %}
+						</p>
+					</div>
+				</a>
 			</li>
 		{% endfor %}
 		</ul>

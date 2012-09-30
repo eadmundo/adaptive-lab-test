@@ -69,11 +69,10 @@ def tweets():
                 db.session.commit()
 
     # get the tweets we want to display
-    tweets = Tweet.query.filter_by(contains_keywords=True).order_by(Tweet.sentiment).all()
+    tweets = Tweet.query.filter_by(contains_keywords=True).order_by(Tweet.sentiment.asc()).all()
     # how many tweets are there in total in the db?
     total_tweets = Tweet.query.count()
     # calculate the % of tweets that contain keywords
-    print len(tweets)/total_tweets
     pc_kw_tweets = int(round((len(tweets)/total_tweets)*100))
 
     return render_template('tweets.jinja', tweets=tweets, pc_kw_tweets=pc_kw_tweets)

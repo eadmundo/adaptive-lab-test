@@ -25,8 +25,8 @@ def configure_assets(app):
     # Build main css bundle
     assets.register('css_main',
         Bundle(
-            'css/default.css',
             'css/bootstrap.css',
+            'css/default.css',
             filters='cssmin',
         ),
         filters='cssrewrite',

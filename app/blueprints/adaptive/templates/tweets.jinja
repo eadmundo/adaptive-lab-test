@@ -1,1 +1,26 @@
 {% extends 'base.jinja' %}
+
+{% block content %}
+
+	<h3>Tweets containing one of the keywords
+		{% for keyword in keywords %}
+			<em>{{ keyword }}</em>{% if not loop.last %},{% endif %}
+		{% endfor %}
+		:
+	</h3>
+
+	{% if tweets|length %}
+		<h4>{{ pc_kw_tweets }}% of the total tweets stored contain one of the keywords</h4>
+		<ul>
+		{% for tweet in tweets %}
+			<li>
+				<p><strong>{{ tweet.message }}</strong></p>
+				<p>by {{ tweet.user.user_handle }} at {{ tweet.updated_at }}</p>
+			</li>
+		{% endfor %}
+		</ul>
+	{% else %}
+		<p>No tweets containing the keywords were found.</p>
+	{% endif %}
+
+{% endblock %}

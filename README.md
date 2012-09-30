@@ -29,4 +29,4 @@ and the application will be available from the host OS at [http://0.0.0.0:5000/]
 
 ## Notes during build
 
-I did notice that some of the messages contain one of the keywords in a way that a human immediately recognises but a straight string match doesn't (e.g. 'diet coke' instead of 'diet-cola'), but I'm going to return to thinking about that if I have time at the end.
+I did notice that some of the messages contain one of the keywords in a way that a human immediately recognises but a straight string match doesn't (e.g. 'Coca cola' instead of 'coca-cola'), but I'm going to return to thinking about that if I have time at the end.

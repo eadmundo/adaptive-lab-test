@@ -1,3 +1,4 @@
+from __future__ import division
 from httplib2 import Http
 import json
 import os
@@ -67,4 +68,12 @@ def tweets():
                 db.session.add(tweet)
                 db.session.commit()
 
-    return render_template('tweets.jinja')
+    # get the tweets we want to display
+    tweets = Tweet.query.filter_by(contains_keywords=True).order_by(Tweet.sentiment).all()
+    # how many tweets are there in total in the db?
+    total_tweets = Tweet.query.count()
+    # calculate the % of tweets that contain keywords
+    print len(tweets)/total_tweets
+    pc_kw_tweets = int(round((len(tweets)/total_tweets)*100))
+
+    return render_template('tweets.jinja', tweets=tweets, pc_kw_tweets=pc_kw_tweets)

@@ -11,6 +11,8 @@ class User(db.Model):
 class Tweet(db.Model):
     __tablename__ = 'tweets'
     id = db.Column(db.Integer, primary_key=True)
+    # when this tweet was inserted into db
+    inserted = db.Column(db.DateTime())
     # stores id provided for tweet by API
     tweet_id = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))

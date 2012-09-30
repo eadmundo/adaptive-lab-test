@@ -15,6 +15,7 @@ def tweets():
 
     # fetch new updates when page is loaded
     if current_app.config.get('ADAPTIVE_API_DEBUG'):
+        #path = os.path.realpath(os.path.join(os.path.dirname(__file__), 'testdata/wrong.json'))
         path = os.path.realpath(os.path.join(os.path.dirname(__file__), 'testdata/tweets.json'))
         tweets = json.loads(open(path).read())
     else:
@@ -35,44 +36,52 @@ def tweets():
             flash("less than %s seconds since last request" % limit)
             tweets = []
 
-    if len(tweets):
+    if type(tweets) is list:
 
-        keywords = current_app.config.get('ADAPTIVE_API_KEYWORDS')
+        if len(tweets):
 
-        for new_tweet in tweets:
-            # see if the user exists in our db
-            user = User.query.filter_by(user_handle=new_tweet['user_handle']).first()
-            if user is None:
-                user = User(
-                    user_handle=new_tweet['user_handle'],
-                    followers=new_tweet['followers'],
-                )
-            # see if the tweet exists in our db
-            tweet = Tweet.query.filter_by(tweet_id=new_tweet['id']).first()
-            if tweet is None:
-                # see if the message contains any of the keywords
-                contains_keywords = False
-                for keyword in keywords:
-                    if keyword in new_tweet['message']:
-                        contains_keywords = True
-                        break
-                tweet = Tweet(
-                    created_at=new_tweet['created_at'],
-                    tweet_id=new_tweet['id'],
-                    message=new_tweet['message'],
-                    sentiment=new_tweet['sentiment'],
-                    updated_at=new_tweet['updated_at'],
-                    contains_keywords=contains_keywords,
-                )
-                tweet.user = user
-                db.session.add(tweet)
-                db.session.commit()
+            keywords = current_app.config.get('ADAPTIVE_API_KEYWORDS')
+
+            for new_tweet in tweets:
+                # see if the user exists in our db
+                user = User.query.filter_by(user_handle=new_tweet['user_handle']).first()
+                if user is None:
+                    user = User(
+                        user_handle=new_tweet['user_handle'],
+                        followers=new_tweet['followers'],
+                    )
+                # see if the tweet exists in our db
+                tweet = Tweet.query.filter_by(tweet_id=new_tweet['id']).first()
+                if tweet is None:
+                    # see if the message contains any of the keywords
+                    contains_keywords = False
+                    for keyword in keywords:
+                        if keyword in new_tweet['message']:
+                            contains_keywords = True
+                            break
+                    tweet = Tweet(
+                        created_at=new_tweet['created_at'],
+                        tweet_id=new_tweet['id'],
+                        message=new_tweet['message'],
+                        sentiment=new_tweet['sentiment'],
+                        updated_at=new_tweet['updated_at'],
+                        contains_keywords=contains_keywords,
+                    )
+                    tweet.user = user
+                    db.session.add(tweet)
+                    db.session.commit()
+
+    else:
+        flash('Something went wrong with the API')
 
     # get the tweets we want to display
-    tweets = Tweet.query.filter_by(contains_keywords=True).order_by(Tweet.sentiment.asc()).all()
+    tweets = Tweet.query.filter_by(contains_keywords=True).order_by(Tweet.sentiment.desc()).all()
     # how many tweets are there in total in the db?
     total_tweets = Tweet.query.count()
-    # calculate the % of tweets that contain keywords
-    pc_kw_tweets = int(round((len(tweets)/total_tweets)*100))
+    if len(tweets) and total_tweets > 0:
+        # calculate the % of tweets that contain keywords
+        pc_kw_tweets = int(round((len(tweets)/total_tweets)*100))
+    else:
+        pc_kw_tweets = 0
 
     return render_template('tweets.jinja', tweets=tweets, pc_kw_tweets=pc_kw_tweets)

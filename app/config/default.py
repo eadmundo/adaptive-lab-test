@@ -19,3 +19,6 @@ SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://@/app'
 ADAPTIVE_API_DEBUG = False
 
 ADAPTIVE_API_URL = 'http://adaptive-test-api.herokuapp.com/tweets.json'
+
+ADAPTIVE_API_KEYWORDS = ['coke', 'coca-cola', 'diet cola',]
+

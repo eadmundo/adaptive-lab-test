@@ -22,6 +22,35 @@ def tweets():
         r, tweets_json = h.request(api_url, headers={'cache-control':'no-cache'})
         tweets = json.loads(tweets_json)
 
-    print tweets
+    keywords = current_app.config.get('ADAPTIVE_API_KEYWORDS')
+
+    for new_tweet in tweets:
+        # see if the user exists in our db
+        user = User.query.filter_by(user_handle=new_tweet['user_handle']).first()
+        if user is None:
+            user = User(
+                user_handle=new_tweet['user_handle'],
+                followers=new_tweet['followers'],
+            )
+        # see if the tweet exists in our db
+        tweet = Tweet.query.filter_by(tweet_id=new_tweet['id']).first()
+        if tweet is None:
+            # see if the message contains any of the keywords
+            contains_keywords = False
+            for keyword in keywords:
+                if keyword in new_tweet['message']:
+                    contains_keywords = True
+                    break
+            tweet = Tweet(
+                created_at=new_tweet['created_at'],
+                tweet_id=new_tweet['id'],
+                message=new_tweet['message'],
+                sentiment=new_tweet['sentiment'],
+                updated_at=new_tweet['updated_at'],
+                contains_keywords=contains_keywords,
+            )
+            tweet.user = user
+            db.session.add(tweet)
+            db.session.commit()
 
     return render_template('tweets.jinja')

@@ -16,9 +16,13 @@ ADMIN_RECIPIENTS = ERROR_EMAIL = ['vagrant@localhost']
 # Database connection string
 SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://@/app'
 
+# fetch from live API or use local file for testing
 ADAPTIVE_API_DEBUG = False
 
 ADAPTIVE_API_URL = 'http://adaptive-test-api.herokuapp.com/tweets.json'
 
 ADAPTIVE_API_KEYWORDS = ['coke', 'coca-cola', 'diet cola',]
+
+# how often in seconds app allowed to fetch updates from live API
+ADAPTIVE_API_RATE_LIMIT = 30
 

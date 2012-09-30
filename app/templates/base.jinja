@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}{% endblock %}</title>
+        {% assets 'css_main' -%}
+        <link rel="stylesheet{% if ASSET_URL.endswith('.less') %}/less{% endif %}" href="{{ ASSET_URL }}" media="screen" />
+        {% endassets %}
+        {{ mustache_templates }}
+    </head>
+
+    <body>
+
+        <h1>Adaptive Lab Test</h1>
+
+        {% with messages = get_flashed_messages(e) %}
+            {% if messages %}
+				<ul class=flashes>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+				</ul>
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}
+        {% endblock %}
+
+        {% assets 'js_main' -%}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+        {% endassets %}
+
+        {%- if debug -%}
+            {% assets 'js_dev' -%}
+            <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+            {% endassets -%}
+        {% endif %}
+    </body>
+</html>

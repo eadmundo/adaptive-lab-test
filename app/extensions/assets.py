@@ -1,5 +1,5 @@
 import os
-import simplejson as json
+import json
 import shutil
 from flask.ext.assets import Environment, Bundle, ExternalAssets
 

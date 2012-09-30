@@ -7,7 +7,6 @@ class AdaptiveTestCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-
         cls.app = create_app(config='config/test.py')
         cls.app_test_client = cls.app.test_client()
 
@@ -18,5 +17,4 @@ class AdaptiveTestCase(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        #fabfile.db.drop(db_name='test_app', warn=False)
         pass

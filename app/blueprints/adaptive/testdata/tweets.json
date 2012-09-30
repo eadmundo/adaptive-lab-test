@@ -1,0 +1,81 @@
+[{
+  "created_at": "2012-09-27T16:14:27Z",
+  "followers": 9,
+  "id": 7,
+  "message": "Vimto or Ribena?  You decide!",
+  "sentiment": 0.2,
+  "updated_at": "2012-09-27T16:14:27Z",
+  "user_handle": "@mad4vimto"
+}, {
+  "created_at": "2012-09-27T16:17:21Z",
+  "followers": 19,
+  "id": 12,
+  "message": "Pepsi is the new coke",
+  "sentiment": 0.0,
+  "updated_at": "2012-09-27T16:17:21Z",
+  "user_handle": "@pepsi"
+}, {
+  "created_at": "2012-09-27T16:18:09Z",
+  "followers": 3,
+  "id": 13,
+  "message": "I've got to say - Pepsi max is great!",
+  "sentiment": 0.9,
+  "updated_at": "2012-09-27T16:18:09Z",
+  "user_handle": "@tasteless"
+}, {
+  "created_at": "2012-09-27T16:15:41Z",
+  "followers": 25,
+  "id": 9,
+  "message": "Remember cola bottles?  Mmm...",
+  "sentiment": 0.8,
+  "updated_at": "2012-09-27T16:15:41Z",
+  "user_handle": "@sweetie"
+}, {
+  "created_at": "2012-09-27T16:12:31Z",
+  "followers": 12,
+  "id": 5,
+  "message": "I don't like pepsi.  I prefer #coke",
+  "sentiment": -0.1,
+  "updated_at": "2012-09-27T16:12:31Z",
+  "user_handle": "@kevin"
+}, {
+  "created_at": "2012-09-27T16:13:31Z",
+  "followers": 9,
+  "id": 6,
+  "message": "Lemonade works for me",
+  "sentiment": 0.4,
+  "updated_at": "2012-09-27T16:13:31Z",
+  "user_handle": "@lemonzest"
+}, {
+  "created_at": "2012-09-27T16:18:50Z",
+  "followers": 245,
+  "id": 14,
+  "message": "Coke coke coke coke coke!!!!",
+  "sentiment": 0.4,
+  "updated_at": "2012-09-27T16:18:50Z",
+  "user_handle": "@coke_snortr"
+}, {
+  "created_at": "2012-09-28T09:42:47Z",
+  "followers": 0,
+  "id": 15,
+  "message": "Cooooooooooooooookkkkkeee!!!!!!!!!",
+  "sentiment": 0.5,
+  "updated_at": "2012-09-28T09:42:47Z",
+  "user_handle": "@heavyhanded"
+}, {
+  "created_at": "2012-09-27T16:16:26Z",
+  "followers": 9,
+  "id": 10,
+  "message": "Coca cola sucks, man",
+  "sentiment": -0.6,
+  "updated_at": "2012-09-27T16:16:26Z",
+  "user_handle": "@disser_ono"
+}, {
+  "created_at": "2012-09-27T16:10:34Z",
+  "followers": 3,
+  "id": 2,
+  "message": "Diet coke is just the best!",
+  "sentiment": 0.9,
+  "updated_at": "2012-09-27T16:10:34Z",
+  "user_handle": "@coke_lvr"
+}]

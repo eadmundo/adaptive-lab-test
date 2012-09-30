@@ -2,7 +2,7 @@
 fabfile module containing application-specific tasks.
 """
 import os
-import simplejson as json
+import json
 
 from fabric.api import env, task
 from fabric.colors import cyan
@@ -27,9 +27,6 @@ def build():
     for path in json.loads(open('app/static/assets/tmp/bower-paths.json').read()).values():
         do('mkdir -p app/static/assets/%s' % os.path.dirname(path))
         do('cp %s app/static/assets/%s' % (path, path))
-
-    #with lcd('bower'):
-    #    do('npm_config_loglevel=error ender build . --output ../app/static/assets/ender/ender')
 
     # Generate static assets. Note that we always build assets with the
     # production config because dev will never point to compiled files.

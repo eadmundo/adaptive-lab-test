@@ -16,8 +16,6 @@ ADMIN_RECIPIENTS = ERROR_EMAIL = ['vagrant@localhost']
 # Database connection string
 SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://@/app'
 
-# Default/base uploads destination
-UPLOADS_DEFAULT_DEST = 'app/static/public'
+ADAPTIVE_API_DEBUG = False
 
-# URL to uploads (include trailing slash)
-UPLOADS_DEFAULT_URL = '/static/public/'
+ADAPTIVE_API_URL = 'http://adaptive-test-api.herokuapp.com/tweets.json'

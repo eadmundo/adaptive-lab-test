@@ -1,0 +1,3 @@
+fabfile/
+puppet/
+.venv/

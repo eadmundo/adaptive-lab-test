@@ -1,0 +1,24 @@
+from app.extensions.db import db
+
+class User(db.Model):
+    __tablename__ = 'users'
+    id = db.Column(db.Integer, primary_key=True)
+    # don't know how long username can be
+    user_handle = db.Column(db.String(255))
+    followers = db.Column(db.Integer)
+
+
+class Tweet(db.Model):
+    __tablename__ = 'tweets'
+    id = db.Column(db.Integer, primary_key=True)
+    # stores id provided for tweet by API
+    tweet_id = db.Column(db.Integer)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user = db.relationship("User")
+    created_at = db.Column(db.DateTime())
+    updated_at = db.Column(db.DateTime())
+    # don't know max length for message, but twitter-like
+    # so just using string
+    message = db.Column(db.String(255))
+    sentiment = db.Column(db.Float)
+

@@ -6,7 +6,8 @@ from app.extensions.assets import assets, configure_assets
 from app.extensions.toolbar import configure_toolbar
 
 DEFAULT_BLUEPRINTS = [
-
+    # '' as second arg loads blueprint at /
+    ('adaptive', ''),
 ]
 
 def create_app(config=None, blueprints=None):
@@ -34,7 +35,7 @@ def create_app(config=None, blueprints=None):
     @app.route('/')
     def index():
         """
-        Placeholder
+        Placeholder - overwritten by blueprint loaded at /
         """
         return ''
 

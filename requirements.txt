@@ -1,0 +1,23 @@
+alembic==0.3.6
+cssmin==0.1.4
+Fabric==1.4.3
+Flask==0.9
+Flask-DebugToolbar==0.7.1
+Flask-Script==0.3.3
+Flask-SQLAlchemy==0.16
+gunicorn==0.14.6
+PIL==1.1.7
+psycopg2==2.4.5
+setproctitle==1.1.6
+python-dateutil==2.1
+simplejson==2.6.1
+git+git://github.com/tobiasandtobias/flask-assets.git@v0.7.1-versioned-images#egg=flask_assets
+git+git://github.com/tobiasandtobias/webassets.git@v0.7.3-versioned-images#egg=webassets
+jsmin==2.0.2
+
+# for tests
+nose==1.1.2
+yanc==0.2.3
+pinocchio==0.3.1
+nose-exclude==0.1.8
+git+git://github.com/tobiasandtobias/fixture.git#egg=fixture

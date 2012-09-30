@@ -1,0 +1,9 @@
+{
+  "name": "Adaptive-Lab-Test",
+  "version": "0.1",
+  "main": "./path/to/main.css",
+  "dependencies": {
+    "hogan.js": "git://github.com/tobiasandtobias/hogan.js.git#v2.0.0",
+    "jquery": "git://github.com/components/jquery.git#1.8.1"
+  }
+}

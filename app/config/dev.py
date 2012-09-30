@@ -7,4 +7,5 @@ DEBUG_TB_PROFILER_ENABLED = True
 # Don't intercept redirects by default
 DEBUG_TB_INTERCEPT_REDIRECTS = False
 
-ADAPTIVE_API_DEBUG = True
+# uncomment this for testing with dummy API response
+#ADAPTIVE_API_DEBUG = True
